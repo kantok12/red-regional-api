@@ -4,3 +4,4 @@ __pycache__/
 *.db
 *.zip
 .env
+node_modules/

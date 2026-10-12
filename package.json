@@ -1,0 +1,18 @@
+{
+  "name": "red-regional",
+  "private": true,
+  "description": "Atajos para levantar backend (Flask) + app (Expo) juntos",
+  "scripts": {
+    "setup": "pip install -r requirements.txt && npm --prefix app install",
+    "dev": "concurrently -k -n api,app -c blue,green \"npm:dev:api\" \"npm:dev:app\"",
+    "dev:api": "cross-env AUTH_DISABLED=1 PORT=5001 python backend/server.py",
+    "dev:app": "cross-env EXPO_PUBLIC_API_URL=http://localhost:5001 EXPO_PUBLIC_DEV_NO_AUTH=1 npm --prefix app run web",
+    "dev:google": "concurrently -k -n api,app -c blue,green \"npm:google:api\" \"npm:google:app\"",
+    "google:api": "cross-env PORT=5001 python backend/server.py",
+    "google:app": "cross-env EXPO_PUBLIC_API_URL=http://localhost:5001 npm --prefix app run web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3"
+  }
+}

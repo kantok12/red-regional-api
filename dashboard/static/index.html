@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Red Regional en vivo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="panel">
+    <header class="panel__header">
+      <div class="brand">
+        <span class="live-dot" id="liveDot"></span>
+        <h1><span id="zoneName">Red Regional</span> <small>en vivo</small></h1>
+      </div>
+    </header>
+
+    <section class="kpis">
+      <div class="kpi"><span class="kpi__value" id="kpiBuses">–</span><span class="kpi__label">Buses activos</span></div>
+      <div class="kpi"><span class="kpi__value" id="kpiRoutes">–</span><span class="kpi__label">Líneas en servicio</span></div>
+      <div class="kpi"><span class="kpi__value" id="kpiAge">–</span><span class="kpi__label">Actualizado</span></div>
+    </section>
+    <div class="refresh-bar"><div id="refreshProgress"></div></div>
+
+    <section class="filters">
+      <input id="search" type="search" placeholder="Buscar patente o línea…" autocomplete="off">
+      <div class="chips" id="routeChips"></div>
+    </section>
+
+    <section class="detail" id="detail" hidden></section>
+
+    <ul class="vehicle-list" id="vehicleList"></ul>
+    <p class="status" id="status">Cargando red…</p>
+  </aside>
+
+  <main class="map-wrap">
+    <div id="map"></div>
+    <div class="map-legend">
+      <span><i class="legend-bus"></i>Bus (flecha = rumbo)</span>
+      <span><i class="legend-stale"></i>Sin señal &gt; 3 min</span>
+      <span><i class="legend-stop"></i>Paradero (zoom ≥ 15)</span>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
